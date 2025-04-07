@@ -1,5 +1,6 @@
 ---
 import Headshot from './Headshot.astro';
+import SocialLinks from './SocialLinks.astro';
 
 interface Props {
   title: string;
@@ -10,5 +11,6 @@ const { title } = Astro.props;
 
 <header>
   <Headshot />
-  <h1>{title}</h1>
+  <SocialLinks />
+  <h1 class="text-xl">{title}</h1>
 </header>

@@ -1,0 +1,41 @@
+---
+import GitHubIcon from '../assets/icons/github.svg';
+import InstagramIcon from '../assets/icons/instagram.svg';
+import LinkedInIcon from '../assets/icons/linkedin.svg';
+import YouTubeIcon from '../assets/icons/youtube.svg';
+
+const links = [
+  {
+    name: 'GitHub',
+    url: 'https://github.com/frasermclean',
+    icon: GitHubIcon,
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/frasermclean/',
+    icon: LinkedInIcon,
+  },
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/frasermclean81/',
+    icon: InstagramIcon,
+  },
+  {
+    name: 'YouTube',
+    url: 'https://www.youtube.com/@FraserMcLean81',
+    icon: YouTubeIcon,
+  },
+];
+---
+
+<ol class="flex gap-2">
+  {
+    links.map((link) => (
+      <li>
+        <a title={link.name} href={link.url} target="_blank" rel="me">
+          <link.icon />
+        </a>
+      </li>
+    ))
+  }
+</ol>
