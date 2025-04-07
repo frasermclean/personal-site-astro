@@ -28,12 +28,12 @@ const links = [
 ];
 ---
 
-<ol class="flex gap-2">
+<ol class="mt-8 flex gap-4">
   {
     links.map((link) => (
       <li>
         <a title={link.name} href={link.url} target="_blank" rel="me">
-          <link.icon />
+          <link.icon width="28" height="28" stroke-width="1.33" />
         </a>
       </li>
     ))

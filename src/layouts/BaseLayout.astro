@@ -1,5 +1,5 @@
 ---
-import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -20,11 +20,12 @@ const { title, description } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="text-neutral-100 bg-neutral-700">
-    <aside>
-      <Header title={title} />
-    </aside>
-    <slot />
+  <body class="text-neutral-100 bg-neutral-700 flex">
+    <Sidebar />
+    <main class="p-4">
+      <h1 class="text-3xl">{title}</h1>
+      <slot />
+    </main>
   </body>
 </html>
 

@@ -1,0 +1,51 @@
+---
+import HomeIcon from '../assets/icons/home.svg';
+import MailIcon from '../assets/icons/mail.svg';
+import UserIcon from '../assets/icons/user.svg';
+
+const links = [
+  {
+    name: 'Home',
+    url: '/',
+    icon: HomeIcon,
+  },
+  {
+    name: 'About Me',
+    url: '/about-me',
+    icon: UserIcon,
+  },
+  {
+    name: 'Contact Me',
+    url: '/contact-me',
+    icon: MailIcon,
+  },
+];
+const currentPath = Astro.url.pathname;
+console.log('currentPath:', currentPath);
+---
+
+<ol class="mt-4 flex flex-col gap-6 text-neutral-200">
+  {
+    links.map((link) => (
+      <li>
+        <a
+          title={link.name}
+          href={link.url}
+          class="flex gap-4 hover:text-blue-300"
+        >
+          <link.icon />
+          <span>{link.name}</span>
+        </a>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .active-link {
+    color: red;
+  }
+  .icon-tabler {
+    stroke-width: 1;
+  }
+</style>
