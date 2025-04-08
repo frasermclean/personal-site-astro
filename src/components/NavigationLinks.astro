@@ -20,18 +20,21 @@ const links = [
     icon: MailIcon,
   },
 ];
-const currentPath = Astro.url.pathname;
-console.log('currentPath:', currentPath);
 ---
 
-<ol class="flex flex-col gap-6 text-neutral-200">
+<ol class="flex flex-col gap-6 text-sm text-neutral-200">
   {
     links.map((link) => (
       <li>
         <a
           title={link.name}
           href={link.url}
-          class="flex gap-4 hover:text-blue-300"
+          class:list={[
+            'flex gap-4 hover:text-blue-300',
+            {
+              'font-semibold': Astro.url.pathname === link.url,
+            },
+          ]}
         >
           <link.icon />
           <span>{link.name}</span>
