@@ -1,17 +1,17 @@
 ---
 import { Image } from 'astro:assets';
-import imageFile from '../assets/headshot-dark-bg.png';
+import imageFile from '../assets/avatar.png';
 
 interface Props {
   size?: number;
 }
 
-const { size = 256 } = Astro.props;
+const { size = 128 } = Astro.props;
 ---
 
 <Image
   src={imageFile}
-  alt="Headshot image of Fraser McLean"
+  alt="Avatar image of Fraser McLean"
   class="rounded-full"
   width={size}
   height={size}
