@@ -22,33 +22,26 @@ const links = [
 ];
 ---
 
-<ol class="flex flex-col gap-6 text-sm text-neutral-200">
-  {
-    links.map((link) => (
-      <li>
-        <a
-          title={link.name}
-          href={link.url}
-          class:list={[
-            'flex gap-4 hover:text-blue-300',
-            {
-              'font-semibold': Astro.url.pathname === link.url,
-            },
-          ]}
-        >
-          <link.icon />
-          <span>{link.name}</span>
-        </a>
-      </li>
-    ))
-  }
-</ol>
-
-<style>
-  .active-link {
-    color: red;
-  }
-  .icon-tabler {
-    stroke-width: 1;
-  }
-</style>
+<nav>
+  <ul class="flex flex-col gap-6 text-sm text-neutral-200">
+    {
+      links.map((link) => (
+        <li>
+          <a
+            title={link.name}
+            href={link.url}
+            class:list={[
+              'flex gap-4 hover:text-blue-300',
+              {
+                'font-semibold': Astro.url.pathname === link.url,
+              },
+            ]}
+          >
+            <link.icon stroke-width="1" />
+            <span>{link.name}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
