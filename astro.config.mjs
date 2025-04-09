@@ -4,7 +4,7 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://wwww.frasermclean.com",
+  site: "https://next.frasermclean.com",
   vite: {
     plugins: [tailwindcss()],
   },
