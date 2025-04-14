@@ -10,20 +10,20 @@ const links = [
     icon: HomeIcon,
   },
   {
-    name: 'About Me',
-    url: '/about-me',
+    name: 'About',
+    url: '/about',
     icon: UserIcon,
   },
   {
-    name: 'Contact Me',
-    url: '/contact-me',
+    name: 'Contact',
+    url: '/contact',
     icon: MailIcon,
   },
 ];
 ---
 
 <nav>
-  <ul class="flex flex-col gap-6 text-sm">
+  <ul class="flex gap-4">
     {
       links.map((link) => (
         <li>
@@ -31,14 +31,14 @@ const links = [
             title={link.name}
             href={link.url}
             class:list={[
-              'flex gap-4 hover:text-teal-400',
+              'flex gap-2 hover:text-teal-400',
               {
                 'font-semibold': Astro.url.pathname === link.url,
               },
             ]}
           >
             <link.icon stroke-width="1" />
-            <span>{link.name}</span>
+            <span class="hidden sm:block">{link.name}</span>
           </a>
         </li>
       ))

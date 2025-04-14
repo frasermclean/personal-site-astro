@@ -1,15 +1,16 @@
 ---
-import Header from './Header.astro';
-import NavigationLinks from './NavigationLinks.astro';
 import SocialLinks from './SocialLinks.astro';
-import ToggleTheme from './ToggleTheme.astro';
 ---
 
 <aside class="p-4 flex flex-col gap-6 w-full md:h-full md:w-64">
-  <Header />
-  <SocialLinks />
-  <NavigationLinks />
-  <div class="hidden md:flex grow"></div>
-  <ToggleTheme />
-  <div class="md:mb-8"></div>
+  <div>
+    <p>
+      Hi there, I'm Fraser. I am software engineer, open-source advocate, and
+      tech enthusiast.
+    </p>
+  </div>
+  <section>
+    <p class="text-xl mb-2">Let's connect!</p>
+    <SocialLinks />
+  </section>
 </aside>

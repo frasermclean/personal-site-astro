@@ -1,16 +1,18 @@
 ---
 import Avatar from './Avatar.astro';
+import NavigationLinks from './NavigationLinks.astro';
+import ToggleTheme from './ToggleTheme.astro';
 ---
 
-<header>
-  <div class="mb-6">
-    <a href="/">
-      <Avatar />
-    </a>
+<header
+  class="text-neutral-50 bg-neutral-600 dark:bg-neutral-900 flex p-2 items-center justify-between sticky top-0"
+>
+  <a href="/" class="flex items-center gap-2">
+    <Avatar size={48} />
+    <span class="sm:text-lg font-bold">Fraser McLean</span>
+  </a>
+  <div class="text-sm flex gap-4">
+    <NavigationLinks />
+    <ToggleTheme />
   </div>
-
-  <p class="text-2xl font-semibold">Fraser McLean</p>
-  <p class="text-md">
-    Software engineer, open-source advocate, and tech enthusiast.
-  </p>
 </header>
