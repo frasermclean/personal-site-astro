@@ -3,44 +3,39 @@ import GitHubIcon from '../assets/icons/github.svg';
 import InstagramIcon from '../assets/icons/instagram.svg';
 import LinkedInIcon from '../assets/icons/linkedin.svg';
 import YouTubeIcon from '../assets/icons/youtube.svg';
+import Link from './Link.astro';
 
-const links = [
+const items = [
   {
     name: 'GitHub',
     url: 'https://github.com/frasermclean',
-    icon: GitHubIcon,
+    Icon: GitHubIcon,
   },
   {
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/frasermclean/',
-    icon: LinkedInIcon,
+    Icon: LinkedInIcon,
   },
   {
     name: 'Instagram',
     url: 'https://www.instagram.com/frasermclean81/',
-    icon: InstagramIcon,
+    Icon: InstagramIcon,
   },
   {
     name: 'YouTube',
     url: 'https://www.youtube.com/@FraserMcLean81',
-    icon: YouTubeIcon,
+    Icon: YouTubeIcon,
   },
 ];
 ---
 
 <ol class="flex gap-4">
   {
-    links.map((link) => (
+    items.map((item) => (
       <li>
-        <a
-          title={link.name}
-          href={link.url}
-          target="_blank"
-          rel="me"
-          class="hover:text-teal-400"
-        >
-          <link.icon width="28" height="28" stroke-width="1.33" />
-        </a>
+        <Link title={item.name} href={item.url} target="_blank" rel="me">
+          <item.Icon width="28" height="28" stroke-width="1.33" />
+        </Link>
       </li>
     ))
   }

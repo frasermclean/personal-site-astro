@@ -1,4 +1,5 @@
 ---
+import Link from './Link.astro';
 import SocialLinks from './SocialLinks.astro';
 ---
 
@@ -6,13 +7,13 @@ import SocialLinks from './SocialLinks.astro';
   <section>
     <p class="text-xl mb-2">&copy; 2025 Fraser McLean</p>
     <p class="text-sm">
-      Built with <a
-        class="underline hover:text-teal-400"
-        href="https://astro.build">Astro</a
-      >, source code available on <a
-        class="underline hover:text-teal-400"
-        href="https://github.com/frasermclean/personal-site-astro">GitHub</a
-      >
+      Built with <Link href="https://astro.build" target="_blank">Astro</Link>,
+      source code available on
+      <Link
+        href="https://github.com/frasermclean/personal-site-astro"
+        target="_blank"
+        >GitHub
+      </Link>
     </p>
   </section>
 
