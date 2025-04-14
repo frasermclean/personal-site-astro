@@ -1,5 +1,26 @@
 ---
+import { Image } from 'astro:assets';
+import headshotImage from '../assets/headshot-dark-bg.png';
+import Card from '../components/Card.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'About Me';
 ---
 
-<BaseLayout title="About Me" description="A little about me" />
+<BaseLayout title={title} description="A little about me">
+  <Card title="Hi there">
+    <div class="flex flex-col md:flex-row gap-4">
+      <p>
+        I'm Fraser, a software engineer, open-source advocate, and tech
+        enthusiast.
+      </p>
+      <Image
+        src={headshotImage}
+        alt="Headshot photo of Fraser McLean"
+        class="rounded-xl"
+        width="256"
+        height="256"
+      />
+    </div>
+  </Card>
+</BaseLayout>
