@@ -3,52 +3,50 @@ import MoonIcon from '../assets/icons/moon.svg';
 import SunIcon from '../assets/icons/sun.svg';
 ---
 
-<button
-  type="button"
-  class="flex gap-4 hover:text-teal-400"
-  id="theme-toggle"
-  onclick="toggleTheme()"
->
+<button type="button" class="flex gap-4 hover:text-teal-400" id="theme-toggle">
   <SunIcon id="sun-icon" stroke-width="1" />
   <MoonIcon id="moon-icon" stroke-width="1" class="hidden" />
   <span class="hidden sm:block">Theme</span>
 </button>
 
-<script is:inline>
-  let theme = (() => {
-    // attempt to get the theme from localStorage (if previously set)
-    const storedTheme = localStorage?.getItem('theme') ?? '';
-    if (['dark', 'light'].includes(storedTheme)) {
-      return storedTheme;
+<script>
+  updateDom(getPreferrredTheme()); // set initial theme based on user preference
+
+  // add click event listener to the button
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    let theme = getPreferrredTheme();
+    theme = theme === 'dark' ? 'light' : 'dark'; // toggle theme
+    localStorage.setItem('theme', theme);
+    updateDom(theme);
+  });
+
+  function getPreferrredTheme(): 'light' | 'dark' {
+    // check localStorage first
+    const storedTheme = localStorage?.getItem('theme');
+    if (storedTheme) {
+      return storedTheme === 'light' || storedTheme === 'dark'
+        ? storedTheme
+        : 'light';
     }
 
     // read the user's system preference (and default to light if no match)
     return window.matchMedia('(prefers-color-scheme: dark)').matches
       ? 'dark'
       : 'light';
-  })();
-
-  updateDom();
-
-  function toggleTheme() {
-    theme = theme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('theme', theme);
-    updateDom();
   }
 
-  function updateDom() {
-    console.log('Setting theme to:', theme);
+  function updateDom(theme: 'light' | 'dark') {
     document.documentElement.dataset['theme'] = theme; // add data-theme attribute to <html> element
 
     const sunIcon = document.getElementById('sun-icon');
     const moonIcon = document.getElementById('moon-icon');
 
     if (theme === 'dark') {
-      sunIcon.classList.add('hidden');
-      moonIcon.classList.remove('hidden');
+      sunIcon?.classList.add('hidden');
+      moonIcon?.classList.remove('hidden');
     } else {
-      sunIcon.classList.remove('hidden');
-      moonIcon.classList.add('hidden');
+      sunIcon?.classList.remove('hidden');
+      moonIcon?.classList.add('hidden');
     }
   }
 </script>
