@@ -6,8 +6,6 @@
 @import "./themes/dark.css";
 @import "./utilities.css";
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-
 body {
   font-family: "Lato", "sans-serif";
   margin: 0;
