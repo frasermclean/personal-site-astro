@@ -9,7 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@fontsource/lato": "^5.2.7",
+    "@fontsource-variable/red-hat-display": "^5.2.8",
     "@tabler/icons": "^3.35.0",
     "@tailwindcss/forms": "~0.5.10",
     "@tailwindcss/vite": "^4.1.14",

@@ -1,6 +1,6 @@
 ---
-import '@fontsource/lato';
-import latoFont from '@fontsource/lato/files/lato-latin-400-normal.woff2';
+import '@fontsource-variable/red-hat-display';
+import redHatDisplayFont from '@fontsource-variable/red-hat-display/files/red-hat-display-latin-wght-normal.woff2';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import '../styles/global.css';
@@ -27,7 +27,7 @@ const { title, description } = Astro.props;
       rel="preload"
       as="font"
       type="font/woff2"
-      href={latoFont}
+      href={redHatDisplayFont}
       crossorigin="anonymous"
     />
   </head>
