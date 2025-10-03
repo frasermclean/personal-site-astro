@@ -1,6 +1,5 @@
 ---
-import '@fontsource-variable/red-hat-display';
-import redHatDisplayFont from '@fontsource-variable/red-hat-display/files/red-hat-display-latin-wght-normal.woff2';
+import Head from '@/components/Head.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import '../styles/global.css';
@@ -15,25 +14,8 @@ const { title, description } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>{title}</title>
-    <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-    <link
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      href={redHatDisplayFont}
-      crossorigin="anonymous"
-    />
-  </head>
-  <body
-    class="bg-neutral-200 text-neutral-900 dark:bg-neutral-700 dark:text-neutral-100 flex flex-col"
-  >
+  <Head title={title} description={description} />
+  <body>
     <Header />
     <main class="p-4 grow">
       <slot />

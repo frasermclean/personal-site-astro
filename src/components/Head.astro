@@ -1,0 +1,58 @@
+---
+import { SITE_TITLE } from '@/constants';
+import '@fontsource-variable/red-hat-display';
+import redHatDisplayFont from '@fontsource-variable/red-hat-display/files/red-hat-display-latin-wght-normal.woff2';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: ImageMetadata;
+}
+
+const { title, description, image } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const absoluteUrl = canonicalURL.toString();
+const imageUrl = image
+  ? new URL(image.src, Astro.site).toString()
+  : new URL('/default-og-image.png', Astro.site).toString();
+---
+
+<head>
+  <title>{title}</title>
+  <meta charset="UTF-8" />
+  <meta name="description" content={description} />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Site icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1" />
+  <link rel="icon" type="image/png" href="/favicon-32x32.png?v=1" />
+  <link rel="shortcut icon" href="/favicon.ico?v=1" />
+
+  <!-- Font preloads -->
+  <link rel="preload" as="font" type="font/woff2" href={redHatDisplayFont} crossorigin />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={SITE_TITLE} />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content={absoluteUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={imageUrl} />
+  <meta property="og:image:alt" content={title} />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@guihubie" />
+  <meta property="twitter:url" content={absoluteUrl} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={imageUrl} />
+</head>
