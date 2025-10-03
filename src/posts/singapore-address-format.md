@@ -1,10 +1,8 @@
 ---
 title: Singapore Address Format
 description: A short guide on how to understand the physical address format in Singapore
-date: 2023-11-05T07:41:38Z
-image: 
-  file: singapore-marina-bay.jpg
-  alt: A view of Marina Bay in Singapore
+pubDate: 2023-11-05T07:41:38Z
+heroImage: '../assets/images/singapore-marina-bay.jpg'
 tags: [ 'travel', 'singapore' ]
 ---
 Having recently moved to Singapore, I am having to apply for numerous accounts and
