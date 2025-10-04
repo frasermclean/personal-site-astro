@@ -1,0 +1,46 @@
+---
+import githubIcon from '@/assets/icons/github.svg';
+import instagramIcon from '@/assets/icons/instagram.svg';
+import linkedInIcon from '@/assets/icons/linkedin.svg';
+import youTubeIcon from '@/assets/icons/youtube.svg';
+
+interface Props {
+  class?: string;
+}
+
+const links = [
+  {
+    href: 'https://github.com/frasermclean',
+    label: 'GitHub',
+    Icon: githubIcon,
+  },
+  {
+    href: 'https://www.linkedin.com/in/frasermclean/',
+    label: 'LinkedIn',
+    Icon: linkedInIcon,
+  },
+  {
+    href: 'https://www.instagram.com/frasermclean81/',
+    label: 'Instagram',
+    Icon: instagramIcon,
+  },
+  {
+    href: 'https://www.youtube.com/@FraserMcLean81',
+    label: 'YouTube',
+    Icon: youTubeIcon,
+  },
+];
+
+const { class: className } = Astro.props;
+---
+
+<div class={className}>
+  {
+    links.map((link) => (
+      <a href={link.href} target="_blank" class="group text-[color:var(--color-text-secondary)]">
+        <span class="sr-only">{link.label}</span>
+        <link.Icon width={28} height={28} stroke-width={1.33} />
+      </a>
+    ))
+  }
+</div>
