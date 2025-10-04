@@ -22,9 +22,9 @@ import SunIcon from '../assets/icons/sun.svg';
   updateDom(getPreferrredTheme()); // set initial theme based on user preference
 
   // add click event listener to the button
-  document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
-    let theme = getPreferrredTheme();
-    theme = theme === 'dark' ? 'light' : 'dark'; // toggle theme
+  const button = document.querySelector('[data-theme-toggle]');
+  button?.addEventListener('click', () => {
+    const theme = getPreferrredTheme() === 'dark' ? 'light' : 'dark'; // toggle theme
     localStorage.setItem('theme', theme);
     updateDom(theme);
   });
