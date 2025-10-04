@@ -130,30 +130,41 @@ const internalLinks = [
   </div>
 </header>
 
-<script is:inline>
-  const btn = document.querySelector('[data-menu-btn]');
+<script>
+  const button = document.querySelector('[data-menu-btn]');
   const panel = document.getElementById('mobile-menu');
+
+  function isMenuOpen() {
+    return panel && !panel.classList.contains('hidden');
+  }
+
   function toggleMenu() {
-    if (!panel || !btn) return;
-    const isOpen = !panel.classList.contains('hidden');
+    if (!panel || !button) return;
+    const isOpen = isMenuOpen();
     if (isOpen) {
       panel.classList.add('hidden');
-      btn.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-expanded', 'false');
     } else {
       panel.classList.remove('hidden');
-      btn.setAttribute('aria-expanded', 'true');
+      button.setAttribute('aria-expanded', 'true');
     }
   }
-  btn?.addEventListener('click', toggleMenu);
+
+  button?.addEventListener('click', toggleMenu);
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      if (!panel?.classList.contains('hidden')) toggleMenu();
+      if (isMenuOpen()) {
+        toggleMenu();
+      }
     }
   });
+
   document.addEventListener('click', (e) => {
-    if (!panel || !btn) return;
-    const target = e.target;
-    const clickedInside = panel.contains(target) || btn.contains(target);
-    if (!clickedInside && !panel.classList.contains('hidden')) toggleMenu();
+    if (!panel || !button) return;
+    const target = e.target as Node;
+    const clickedInside = panel.contains(target) || button.contains(target);
+    if (!clickedInside && !isMenuOpen()) {
+      toggleMenu();
+    }
   });
 </script>
