@@ -3,17 +3,26 @@ import MoonIcon from '../assets/icons/moon.svg';
 import SunIcon from '../assets/icons/sun.svg';
 ---
 
-<button type="button" class="flex gap-4 hover:text-teal-400" id="theme-toggle">
-  <SunIcon id="sun-icon" stroke-width="1" class="block dark:hidden" />
-  <MoonIcon id="moon-icon" stroke-width="1" class="hidden dark:block" />
-  <span class="hidden sm:block">Theme</span>
+<button
+  type="button"
+  class="sw-btn-sm no-underline flex items-center gap-1"
+  aria-label="Toggle theme"
+  aria-pressed="false"
+  data-theme-toggle
+>
+  <span class="sr-only">Toggle theme</span>
+  <span class="theme-icon" aria-hidden="true">
+    <SunIcon id="sun-icon" stroke-width="1" class="block dark:hidden" />
+    <MoonIcon id="moon-icon" stroke-width="1" class="hidden dark:block" />
+  </span>
+  <span class="label">Theme</span>
 </button>
 
 <script>
   updateDom(getPreferrredTheme()); // set initial theme based on user preference
 
   // add click event listener to the button
-  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+  document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
     let theme = getPreferrredTheme();
     theme = theme === 'dark' ? 'light' : 'dark'; // toggle theme
     localStorage.setItem('theme', theme);
@@ -24,15 +33,11 @@ import SunIcon from '../assets/icons/sun.svg';
     // check localStorage first
     const storedTheme = localStorage?.getItem('theme');
     if (storedTheme) {
-      return storedTheme === 'light' || storedTheme === 'dark'
-        ? storedTheme
-        : 'light';
+      return storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : 'light';
     }
 
     // read the user's system preference (and default to light if no match)
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
   function updateDom(theme: 'light' | 'dark') {
